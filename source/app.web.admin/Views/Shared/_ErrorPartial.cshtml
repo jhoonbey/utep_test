@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+    var error = ViewData.ModelState["errorKey"];
+}
+@if (error != null)
+{
+    <div class="box-content alerts" style="padding:0px;">
+        <div>
+            @foreach (var item in error.Errors)
+            {
+                <div class="alert alert-error" style="background-color: #ee5f5b; color: white;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    @item.ErrorMessage
+                </div>
+            }
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,239 @@
+﻿@model  Supplier
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="glyphicon glyphicon-plus"></i>New Supplier</h2>
+        </div>
+        <div class="box-content">
+
+            <div class="stepwizard">
+                <div class="stepwizard-row setup-panel">
+                    <div class="stepwizard-step">
+                        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                        <p>Personal details</p>
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                        <p> Car details</p>
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                        <p>Document details</p>
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                        <p>Passport Photo</p>
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
+                        <p>Truck photo</p>
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="#step-6" type="button" class="btn btn-default btn-circle" disabled="disabled">6</a>
+                        <p>Finish</p>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm("Create", "Suppliers", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
+            {
+                <div class="row setup-content" id="step-1">
+                    <div class="col-md-12">
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="FirstName">First name</label>
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+
+                                <label class="control-label" for="LastName">Last name</label>
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="WhatsappNumber">Whatsapp number</label>
+                                @Html.TextBoxFor(model => model.WhatsappNumber, new { @class = "form-control" })
+
+                                <label class="control-label" for="ContactNumber">Contact number</label>
+                                @Html.TextBoxFor(model => model.ContactNumber, new { @class = "form-control" })
+                                <br>
+                                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row setup-content" id="step-2">
+                    <div class="col-md-12">
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="TransportTypeId">Transport type</label>
+                                @Html.DropDownListFor(model => model.TransportTypeId, ViewBag.TransportTypes as IEnumerable<SelectListItem>, "-",
+                                            new { data_rel = "chosen", @id = "TransportTypeId", @style = "min-width: 200px;" })
+
+                                <label class="control-label" for="PlateNumber">Plate number</label>
+                                @Html.TextBoxFor(model => model.PlateNumber, new { @class = "form-control" })
+
+                                <label class="control-label" for="PlateNumber2">Plate number2</label>
+                                @Html.TextBoxFor(model => model.PlateNumber2, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="CompanyId">Supplier company</label>
+                                @Html.DropDownListFor(model => model.CompanyId, ViewBag.Companies as IEnumerable<SelectListItem>, "-",
+                                            new { data_rel = "chosen", @id = "CompanyId", @style = "min-width: 200px;" })
+
+                                <br />
+                                <label class="control-label" for="Year">Year</label>
+                                @Html.TextBoxFor(model => model.Year, new { @class = "form-control" })
+
+                                <label class="control-label" for="Condition">Condition</label>
+                                @Html.TextBoxFor(model => model.Condition, new { @class = "form-control" })
+
+                                <br>
+                                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row setup-content" id="step-3">
+                    <div class="col-md-12">
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="InternationalPassport">International passport</label>
+                                @Html.TextBoxFor(model => model.InternationalPassport, new { @class = "form-control" })
+
+                                <label class="control-label" for="DrivingLicense">Driving license</label>
+                                @Html.TextBoxFor(model => model.DrivingLicense, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="TransportPassport">Transport passport</label>
+                                @Html.TextBoxFor(model => model.TransportPassport, new { @class = "form-control" })
+
+                                <label class="control-label" for="TransportPassport2">Transport passport 2</label>
+                                @Html.TextBoxFor(model => model.TransportPassport2, new { @class = "form-control" })
+
+                                <br>
+                                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row setup-content" id="step-4">
+                    <div class="col-md-12">
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="InternationalPassportPhotoName">International passport photo</label>
+                                <input type="file" name="inter" id="InternationalPassportPhotoName" />
+
+                                <label class="control-label" for="DrivingLicensePhotoName">Driving License photo</label>
+                                <input type="file" name="lic" id="DrivingLicensePhotoName" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="TransportPassportPhotoName">Transport passport photo</label>
+                                <input type="file" name="pass" id="TransportPassportPhotoName" />
+
+                                <label class="control-label" for="TransportPassport2PhotoName">Transport passport 2 photo</label>
+                                <input type="file" name="pass2" id="TransportPassport2PhotoName" />
+
+                                <br>
+                                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row setup-content" id="step-5">
+                    <div class="col-md-12">
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="TruckFrontPhotoName">Truck photo front</label>
+                                <input type="file" name="front" id="TruckFrontPhotoName" />
+
+                                <label class="control-label" for="TruckBackPhotoName">Truck photo back</label>
+                                <input type="file" name="back" id="TruckBackPhotoName" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="col-md-10 form-group">
+                                <label class="control-label" for="TruckRightPhotoName">Truck photo right</label>
+                                <input type="file" name="right" id="TruckRightPhotoName" />
+
+                                <label class="control-label" for="TruckLeftPhotoName">Truck photo left</label>
+                                <input type="file" name="left" id="TruckLeftPhotoName" />
+
+                                <br>
+                                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row setup-content" id="step-6">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a class="btn btn-danger" href="@Url.Action("List", "Suppliers")">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#TransportTypeId").chosen({ width: "100%" });
+        $("#CompanyId").chosen({ width: "100%" });
+
+        var navListItems = $('div.setup-panel div a'),
+            allWells = $('.setup-content'),
+            allNextBtn = $('.nextBtn');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+                $item.addClass('btn-primary');
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+        allNextBtn.click(function () {
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+
+            $(".form-group").removeClass("has-error");
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+    });
+
+</script>

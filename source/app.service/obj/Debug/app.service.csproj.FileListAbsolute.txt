@@ -1,0 +1,2 @@
+C:\Data\Git\utep_test\source\app.service\obj\Debug\app.service.csproj.AssemblyReference.cache
+C:\Data\Git\utep_test\source\app.service\obj\Debug\app.service.csproj.CoreCompileInputs.cache

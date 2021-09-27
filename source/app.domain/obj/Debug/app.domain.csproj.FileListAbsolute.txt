@@ -1,0 +1,6 @@
+C:\Data\Git\utep_test\source\app.domain\bin\Debug\app.domain.dll
+C:\Data\Git\utep_test\source\app.domain\bin\Debug\app.domain.pdb
+C:\Data\Git\utep_test\source\app.domain\obj\Debug\app.domain.csproj.AssemblyReference.cache
+C:\Data\Git\utep_test\source\app.domain\obj\Debug\app.domain.csproj.CoreCompileInputs.cache
+C:\Data\Git\utep_test\source\app.domain\obj\Debug\app.domain.dll
+C:\Data\Git\utep_test\source\app.domain\obj\Debug\app.domain.pdb

@@ -1,0 +1,28 @@
+﻿@if (TempData["RedirectAlert"] != null)
+{
+    ClientAlertModel alert = (ClientAlertModel)TempData["RedirectAlert"];
+
+    if (alert.Status == AlertStatus.Success)
+    {
+    <div class="alert alert-success" style="background-color: #62c462; color: white;">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>@Html.Raw(alert.Message) </strong>
+    </div>
+    }
+    else
+        if (alert.Status == AlertStatus.Error)
+        {
+    <div class="alert alert-error" style="background-color: #ee5f5b; color: white;">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>@Html.Raw(alert.Message) </strong>
+    </div>
+        }
+    TempData["RedirectAlert"] = null;
+    TempData.Remove("RedirectAlert");
+}
+
+
+
+
+
+

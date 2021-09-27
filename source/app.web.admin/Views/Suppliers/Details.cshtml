@@ -1,0 +1,244 @@
+﻿@model SupplierDataModel
+@{
+    string fileRoot = ViewBag.FileRoot == null ? "" : (string)ViewBag.FileRoot;
+}
+
+<div class="row">
+    <div class="row-fluid sortable">
+        <div class="box span12">
+            <div class="box-header well" data-original-title>
+                <a href="@Url.Action("List", "Suppliers", new { area = "" })" class="btn btn-small btn-warning btn-round"
+                   style="float: right; margin-right: 10px; margin-top: -3px; padding-top: 7px; ">Return List</a>
+
+                @*<a href="#" onclick="confirmDelete(@Model.Category.Id)" class="btn btn-small btn-danger btn-round" style="float: right; margin-right: 10px;">Delete</a>*@
+
+                <a href="@Url.Action("Edit", "Suppliers", new { area = "", id = Model.Supplier.Id })" class="btn btn-small btn-primary btn-round"
+                   style="float: right; margin-right: 10px; margin-top: -3px; padding-top: 7px ; ">Edit</a>
+
+                <h2><i class=""></i>@Model.Supplier.FirstName @Model.Supplier.LastName</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>First name</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.FirstName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Last name</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.LastName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Whatsapp number</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.WhatsappNumber
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Contact number</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.ContactNumber
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Plate number</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.PlateNumber
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Plate number 2</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.PlateNumber2
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Transport passport</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.TransportPassport
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Transport passport 2</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.TransportPassport2
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>International passport</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.InternationalPassport
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Driving license</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.DrivingLicense
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Transport passport photo</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(Model.Supplier.TransportPassportPhotoName))
+                                {
+                                    <img src="@Url.Content(fileRoot + "_Files/Images/Supplier/256/" + Model.Supplier.TransportPassportPhotoName)" alt="" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Transport passport 2 photo</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(Model.Supplier.TransportPassport2PhotoName))
+                                {
+                                    <img src="@Url.Content(fileRoot + "_Files/Images/Supplier/256/" + Model.Supplier.TransportPassport2PhotoName)" alt="" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>International passport photo</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(Model.Supplier.InternationalPassportPhotoName))
+                                {
+                                    <img src="@Url.Content(fileRoot + "_Files/Images/Supplier/256/" + Model.Supplier.InternationalPassportPhotoName)" alt="" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Driving license photo</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(Model.Supplier.DrivingLicensePhotoName))
+                                {
+                                    <img src="@Url.Content(fileRoot + "_Files/Images/Supplier/256/" + Model.Supplier.DrivingLicensePhotoName)" alt="" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Year</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.Year
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Condition</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.Condition
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Company</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (Model.Company != null)
+                                {
+                                    <text>@Model.Company.Name</text>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Transport type</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (Model.TransportType != null)
+                                {
+                                    <text> Model.TransportType.Name                                </text>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Created date</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Model.Supplier.CreateDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Truck Front Photo</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(Model.Supplier.TruckFrontPhotoName))
+                                {
+                                    <img src="@Url.Content(fileRoot + "_Files/Images/Supplier/256/" + Model.Supplier.TruckFrontPhotoName)" alt="" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Truck Back Photo</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(Model.Supplier.TruckBackPhotoName))
+                                {
+                                    <img src="@Url.Content(fileRoot + "_Files/Images/Supplier/256/" + Model.Supplier.TruckBackPhotoName)" alt="" />
+                                }
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Truck Right Photo</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(Model.Supplier.TruckRightPhotoName))
+                                {
+                                    <img src="@Url.Content(fileRoot + "_Files/Images/Supplier/256/" + Model.Supplier.TruckRightPhotoName)" alt="" />
+                                }
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                <b>Truck Left Photo</b>
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @if (!string.IsNullOrEmpty(Model.Supplier.TruckLeftPhotoName))
+                                {
+                                    <img src="@Url.Content(fileRoot + "_Files/Images/Supplier/256/" + Model.Supplier.TruckLeftPhotoName)" alt="" />
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model  app.domain.Model.Entities.TransportType
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="glyphicon glyphicon-edit"></i>Edit TransportType</h2>
+        </div>
+        <div class="box-content">
+            @using (Html.BeginForm("Edit", "TransportTypes", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.CreateDate)
+                @Html.HiddenFor(model => model.IsDeleted)
+
+                <fieldset>
+                    <div class="form-group col-md-4">
+
+                        <label class="control-label" for="Name">Name</label>
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+
+                        <br>
+
+                        <label class="control-label" for="Address">Weight capacity</label>
+                        @Html.TextBoxFor(model => model.WeightCapacity, new { @class = "form-control" })
+
+                        <br>
+
+                        <label class="control-label" for="Voen">Volume capacity</label>
+                        @Html.TextBoxFor(model => model.VolumeCapacity, new { @class = "form-control" })
+
+                        <br>
+
+                        <label class="control-label" for="Mail">Capacity in palletes</label>
+                        @Html.TextBoxFor(model => model.CapacityInPalletes, new { @class = "form-control" })
+
+                        <br>
+
+                        <label class="control-label" for="Phone">Capacity in palletes</label>
+                        @Html.TextBoxFor(model => model.CapacityInPalletes, new { @class = "form-control" })
+
+                        <br>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn btn-danger" href="@Url.Action("List", "TransportTypes")">Cancel</a>
+                    </div>
+                </fieldset>
+
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model  City
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title>
+                <h2><i class="glyphicon glyphicon-plus"></i> New City</h2>
+            </div>
+            <div class="box-content">
+                @using (Html.BeginForm("Create", "Cities", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+
+                    <fieldset>
+                        <div class="form-group col-md-4">
+                            <label class="control-label" for="CountryId">Country</label>
+                            <br>
+                            @Html.DropDownListFor(model => model.CountryId, ViewBag.Countries as IEnumerable<SelectListItem>, "-", new { data_rel = "chosen", @id = "CountryId", @style = "min-width: 200px;" })
+
+                            <br>
+
+                            <label class="control-label" for="Name">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+
+                            <br>
+
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a class="btn btn-danger" href="@Url.Action("List", "Cities")">Cancel</a>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(function () {
+            $("#CountryId").chosen();
+        });
+</script>

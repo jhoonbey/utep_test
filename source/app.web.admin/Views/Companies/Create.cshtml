@@ -1,0 +1,105 @@
+﻿@model  Company
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header well" data-original-title>
+            <h2><i class="glyphicon glyphicon-plus"></i>New Supplier Company</h2>
+        </div>
+        <div class="box-content">
+            @using (Html.BeginForm("Create", "Companies", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <fieldset>
+                    <div class="form-group col-md-4">
+
+                        <label class="control-label" for="CountryId">Country</label>
+                        <br>
+                        @Html.DropDownListFor(model => model.CountryId, ViewBag.Countries as IEnumerable<SelectListItem>, "-", new { data_rel = "chosen", @id = "prntId", @style = "min-width: 200px;" })
+
+                        <br>
+
+                        <label class="control-label" for="CityId">City</label>
+                        <br>
+                        @Html.DropDownListFor(model => model.CityId, ViewBag.Cities as IEnumerable<SelectListItem>, "-", new { data_rel = "chosen", @id = "chldId", @style = "min-width: 200px;" })
+
+                        <br>
+
+                        <label class="control-label" for="Name">Name</label>
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+
+                        <br>
+
+                        <label class="control-label" for="Address">Address</label>
+                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+
+                        <br>
+
+                        <label class="control-label" for="Voen">Voen</label>
+                        @Html.TextBoxFor(model => model.Voen, new { @class = "form-control" })
+
+                        <br>
+
+                        <label class="control-label" for="Mail">Mail</label>
+                        @Html.TextBoxFor(model => model.Mail, new { @class = "form-control" })
+
+                        <br>
+
+                        <label class="control-label" for="Phone">Phone</label>
+                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+
+                        <br>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a class="btn btn-danger" href="@Url.Action("List", "Companies")">Cancel</a>
+                    </div>
+                </fieldset>
+
+            }
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(function () {
+            $("#prntId").chosen({ width: "100%" });
+            $("#chldId").chosen({ width: "100%" });
+
+            $("#prntId").change( function () { loadLevelTwo(this); });
+
+            loadLevelTwo($("#prntId"));
+
+
+    function loadLevelTwo(selectList) {
+        var selectedId = $(selectList).val();
+        $.ajax(
+        {
+            url: "@Url.Action("LoadCitiesByCountryId", "Cities")",
+            type: "GET",
+            data: { parentId: selectedId },
+            error:
+            //function (xhr) {
+            //    alert(xhr);
+            //    alert("Something went wrong, please try again");
+            //}
+            function (xhr, status, error) {
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+            }
+        }).done(function (data) {
+            $("#chldId").children().each(function (index, option) {
+                $(option).remove();
+            });
+            var items = "<option selected value=\"\"></option>";
+            $.each(data,
+                function (i, item) {
+                    items += "<option value=\"" + item.Id + "\">" + item.Name + "</option>";
+                });
+
+            $("#chldId").html(items)
+            //$("#chldId").trigger("liszt:updated");
+            $('#chldId').trigger("chosen:updated");
+            $("#chldId").change();
+
+        });
+    }
+
+        });
+</script>

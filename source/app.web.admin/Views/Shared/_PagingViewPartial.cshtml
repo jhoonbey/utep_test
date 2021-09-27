@@ -1,0 +1,29 @@
+﻿@model PagingModel
+
+@if (Model.NumberOfPages > 1)
+{
+    if (Model.CurrentPage > 1)
+    {
+        <li><a href="@(Url.Action(Model.Action, Model.Controller, new { area = Model.Area, pageNumber = 1 }))" style="cursor:pointer;"><< </a></li>
+        <li><a href="@(Url.Action(Model.Action, Model.Controller, new { area = Model.Area, pageNumber = (Model.CurrentPage - 1) }))" style="cursor:pointer;">< </a></li>
+    }
+    else
+    {
+        <li><a style="cursor: not-allowed;"><< </a></li>
+        <li><a style="cursor: not-allowed;">< </a></li>
+    }
+
+    if (Model.CurrentPage < Model.NumberOfPages)
+    {
+        <li><a href="@(Url.Action(Model.Action, Model.Controller, new { area = Model.Area, pageNumber = (Model.CurrentPage + 1) }))" style="cursor:pointer;">> </a></li>
+        <li><a href="@(Url.Action(Model.Action, Model.Controller, new { area = Model.Area, pageNumber = (Model.NumberOfPages) }))" style="cursor:pointer;">>> </a></li>
+    }
+    else
+    {
+        <li><a style="cursor: not-allowed;">> </a></li>
+        <li><a style="cursor: not-allowed;">>> </a></li>
+    }
+
+    <li class="paging_text" style="float: right;">/ @Model.NumberOfPages</li>
+    <li class="paging_text" style="float: right;">@Model.CurrentPage </li>
+}

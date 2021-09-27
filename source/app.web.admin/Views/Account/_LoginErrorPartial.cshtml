@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+    var error = ViewData.ModelState["errorKey"];
+}
+@if (error != null)
+{
+    <div class="alert ">
+        @foreach (var item in error.Errors)
+        {
+            <text>@item.ErrorMessage</text>
+        }
+    </div>
+}
+
+
+
+
+
+
+
+
+
+

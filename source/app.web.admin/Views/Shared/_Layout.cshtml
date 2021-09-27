@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 7 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="x-ua-compatible" content="IE=EmulateIE9">
+    <meta http-equiv="x-ua-compatible" content="IE=EmulateIE8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+    <title>Utep.az</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Utep.az" />
+    <meta name="author" content="Jeyhun Rahimov ">
+    <meta name="description" content="Utep.az">
+    <link rel="shortcut icon" href="@Url.Content("~/Content/img/favicon.ico")" />
+
+    <!-- The styles -->
+    <link href="@Url.Content("~/Content/css/bootstrap-cerulean.min.css")" id="bs-css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/charisma-app.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bower_components/fullcalendar/dist/fullcalendar.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bower_components/fullcalendar/dist/fullcalendar.print.css")" rel="styleshet" media="print" />
+    <link href="@Url.Content("~/Content/bower_components/chosen/chosen.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bower_components/colorbox/example3/colorbox.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bower_components/responsive-tables/responsive-tables.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/jquery.noty.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/noty_theme_default.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/elfinder.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/elfinder.theme.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/jquery.iphone.toggle.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/uploadify.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/animate.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/wizardForm.css")" rel="stylesheet" />
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="@Url.Content("~/Content/js/jquery.minFromGoogleApis.js")"></script>
+
+</head>
+<body>
+    @{
+        var sInfo = (SessionInfo)ViewBag.SessionInfo;
+        string sUsername = sInfo == null ? string.Empty : sInfo.Username;
+        //string sRolename = sInfo == null ? string.Empty : Enum.GetName(typeof(EnumUserRole), sInfo.Role);
+    }
+
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-inner">
+            <button type="button" class="navbar-toggle pull-left animated flip">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img alt="Utep.az" src="@Url.Content("~/Content/img/logo.png")" class="hidden-xs"
+                     style="    height: 70px; margin-top: -24px;     width: 207px;" />
+                @*<span>Utep.az</span>*@
+            </a>
+            <!-- user dropdown starts -->
+            <div class="btn-group pull-right">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> @sUsername</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @*<li><a href="#">Profile</a></li>
+                        <li class="divider"></li>*@
+                    <li><a href="@Url.Action("ChangePassword", "Account")">Change password</a></li>
+                    <li class="divider"></li>
+                    <li><a href="@Url.Action("Logout", "Account")">Logout</a></li>
+
+                </ul>
+            </div>
+            <!-- user dropdown ends -->
+            <!-- theme selector starts -->
+            @*<div class="btn-group pull-right theme-container animated tada">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-tint"></i><span class="hidden-sm hidden-xs">Change Theme / Skin</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" id="themes">
+                        <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
+                        <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
+                        <li><a data-value="cyborg" href="#"><i class="whitespace"></i> Cyborg</a></li>
+                        <li><a data-value="simplex" href="#"><i class="whitespace"></i> Simplex</a></li>
+                        <li><a data-value="darkly" href="#"><i class="whitespace"></i> Darkly</a></li>
+                        <li><a data-value="lumen" href="#"><i class="whitespace"></i> Lumen</a></li>
+                        <li><a data-value="slate" href="#"><i class="whitespace"></i> Slate</a></li>
+                        <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
+                        <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
+                    </ul>
+                </div>*@
+            <!-- theme selector ends -->
+            @*<ul class="collapse navbar-collapse nav navbar-nav top-menu">
+                    <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-star"></i> Dropdown <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <form class="navbar-search pull-left">
+                            <input placeholder="Search" class="search-query form-control col-md-10" name="query"
+                                   type="text">
+                        </form>
+                    </li>
+                </ul>*@
+        </div>
+    </div>
+
+    <!-- topbar ends -->
+    <div class="ch-container">
+        <div class="row" style="min-height: 700px;">
+
+            @Html.Partial("~/Views/Shared/_MenuPartial.cshtml")
+
+
+            <div id="content" class="col-lg-10 col-sm-10">
+
+                @Html.Partial("~/Views/Shared/_AlertPartialRedirect.cshtml")
+                @Html.Partial("~/Views/Shared/_ErrorPartial.cshtml")
+
+                @RenderBody()
+
+            </div>
+            <!--/#content.col-md-0-->
+        </div>
+        <!--/fluid-row-->
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h3>Settings</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Here settings can be configured...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                        <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="row">
+            <p class="col-md-9 col-sm-9 col-xs-12 copyright">
+                &copy; <a href="@Url.Action("Index", "Home")" @*target="_blank"*@>
+                    Utep.az
+                </a> @DateTime.Now.Year.ToString()
+            </p>
+            <p class="col-md-3 col-sm-3 col-xs-12 powered-by">
+                Powered by: <a href="@Url.Action("Index", "Home")">Utep.az</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- jQuery -->
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+
+    <!-- external javascript -->
+    <script src="@Url.Content("~/Content/bower_components/bootstrap/dist/js/bootstrap.min.js")"></script>
+
+    <!-- calender plugin -->
+    <script src="@Url.Content("~/Content/bower_components/moment/min/moment.min.js")"></script>
+    <script src="@Url.Content("~/Content/bower_components/fullcalendar/dist/fullcalendar.min.js")"></script> <!-- data table plugin -->
+    @*<script src="@Url.Content("~/Content/js/jquery.dataTables.min.js")"></script>*@
+    <!-- select or dropdown enhancer -->
+    <script src="@Url.Content("~/Content/bower_components/chosen/chosen.jquery.min.js")"></script>
+    <!-- plugin for gallery image view -->
+    <script src="@Url.Content("~/Content/bower_components/colorbox/jquery.colorbox-min.js")"></script>
+    <!-- notification plugin -->
+    <script src="@Url.Content("~/Content/js/jquery.noty.js")"></script>
+    <!-- library for making tables responsive -->
+    <script src="@Url.Content("~/Content/bower_components/responsive-tables/responsive-tables.js")"></script>
+    <!-- tour plugin -->
+    <script src="@Url.Content("~/Content/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js")"></script>
+    <!-- star rating plugin -->
+    <script src="@Url.Content("~/Content/js/jquery.raty.min.js")"></script>
+    <!-- for iOS style toggle switch -->
+    <script src="@Url.Content("~/Content/js/jquery.iphone.toggle.js")"></script>
+    <!-- autogrowing textarea plugin -->
+    <script src="@Url.Content("~/Content/js/jquery.autogrow-textarea.js")"></script>
+    <!-- multiple file upload plugin -->
+    <script src="@Url.Content("~/Content/js/jquery.uploadify-3.1.min.js")"></script>
+    <!-- history.js for cross-browser state change on ajax -->
+    <script src="@Url.Content("~/Content/js/jquery.history.js")"></script>
+    <!-- application script for Charisma demo -->
+    <script src="@Url.Content("~/Content/js/charisma.js")"></script>
+
+
+
+</body>
+</html>

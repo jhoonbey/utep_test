@@ -1,0 +1,31 @@
+﻿@model  Country
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title>
+                <h2><i class="glyphicon glyphicon-edit"></i> Edit Country</h2>
+            </div>
+            <div class="box-content">
+                @using (Html.BeginForm("Edit", "Countries", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.CreateDate)
+                    @Html.HiddenFor(model => model.IsDeleted)
+
+                    <fieldset>
+                        <div class="form-group col-md-4">
+                            <label class="control-label" for="Name">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+
+                            <br>
+
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a class="btn btn-danger" href="@Url.Action("List", "Countries")">Cancel</a>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
